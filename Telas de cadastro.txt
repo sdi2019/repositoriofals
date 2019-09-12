@@ -1,18 +1,17 @@
 Telas de cadastro 
-	usu·rio - insert apenas no usu·rio, tem vÌnculo com todas as tb ()
+	usu√°rio - insert apenas no usu√°rio, tem v√≠nculo com todas as tb ()
 	pessoa - inserto penas na pessoa
 	assunto
 	area conhecimetno
-	cd instituiÁ„o
+	cd institui√ß√£o
 	
-	Para cadastrar um orientador È obrigatÛrio puxar o cÛdigo da pessoa, mesma coisa no aluno.
-	Para cadastrar um curso È obrigado vincular uma instituiÁ„o, se estiver em branco, n„o deixar cadastrar
-	sub Area Conhecimento - È obrigado informar uma ·rea do conhecimento.
-	Para vincular um aluno ao curso È a tabela curso aluno, nessa tabela puxa o cÛdigo de um curso e de um aluno.
-	Para cadastrar um tcc, È obrigado informar um orientador, um assunto e uma sub area de conhecimento.
-	Para vincular um aluno ao tcc(aluno_tcc), È preciso informar o cÛdigo de um tcc e um cÛdigo do curso tb aluno, que È o vinculo de um aluno com o curso.
-	A biblioteca sÛ cadastra tcc e faz vinculo de um aluno ao tcc, e o usu·rio master cadastra tudo.
+	Para cadastrar um orientador √© obrigat√≥rio puxar o c√≥digo da pessoa, mesma coisa no aluno.
+	Para cadastrar um curso √© obrigat√≥rio vincular uma institui√ß√£o, se estiver em branco, n√£o deixar cadastrar
+	sub Area Conhecimento - √© obrigat√≥rio informar uma √°rea do conhecimento.
+	Para vincular um aluno ao curso, √© na tabela curso aluno, nessa tabela puxa o c√≥digo de um curso e de um aluno.
+	Para cadastrar um tcc, √© obrigat√≥rio informar um orientador, um assunto e uma sub area de conhecimento.
+	Para vincular um aluno ao tcc(aluno_tcc), √© preciso informar o c√≥digo de um tcc e um c√≥digo do curso tb aluno, que √© o vinculo de um aluno com o curso.
+	A biblioteca s√≥ cadastra tcc e faz vinculo de um aluno ao tcc, j√° o usu√°rio master cadastra tudo.
 	
 	
-	alunosdi2018
 	
