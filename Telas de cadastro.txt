@@ -1,0 +1,18 @@
+Telas de cadastro 
+	usuário - insert apenas no usuário, tem vínculo com todas as tb ()
+	pessoa - inserto penas na pessoa
+	assunto
+	area conhecimetno
+	cd instituição
+	
+	Para cadastrar um orientador é obrigatório puxar o código da pessoa, mesma coisa no aluno.
+	Para cadastrar um curso é obrigado vincular uma instituição, se estiver em branco, não deixar cadastrar
+	sub Area Conhecimento - é obrigado informar uma área do conhecimento.
+	Para vincular um aluno ao curso é a tabela curso aluno, nessa tabela puxa o código de um curso e de um aluno.
+	Para cadastrar um tcc, é obrigado informar um orientador, um assunto e uma sub area de conhecimento.
+	Para vincular um aluno ao tcc(aluno_tcc), é preciso informar o código de um tcc e um código do curso tb aluno, que é o vinculo de um aluno com o curso.
+	A biblioteca só cadastra tcc e faz vinculo de um aluno ao tcc, e o usuário master cadastra tudo.
+	
+	
+	alunosdi2018
+	

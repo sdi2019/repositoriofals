@@ -1,0 +1,200 @@
+create database db_tcc;
+
+use db_tcc;
+
+create table usuarioSistema (
+	cd_usuarioSistema INTEGER auto_increment NOT NULL,
+	nm_usuarioSistema VARCHAR(50), 
+	nm_nick_usuarioSistema VARCHAR(20) UNIQUE, 
+	cd_cpf_usuarioSistema INTEGER, 
+	nm_email_usuarioSistema VARCHAR(256),
+	nm_criou_usuarioSistema VARCHAR(20), 
+	dt_criacao_usuarioSistema DATE, 
+	nm_alterou_usuarioSistema VARCHAR(20),
+	dt_modificacao_usuarioSistema DATE,
+    primary key (cd_usuarioSistema)
+);
+
+create table areaConhecimento (
+	cd_areaConhecimento INTEGER NOT NULL,
+	desc_areaConhecimento VARCHAR(50),
+	nm_usuario_criou_areaConhecimento VARCHAR(20) NOT NULL,
+    nm_usuario_alterou_areaConhecimento VARCHAR(20) NOT NULL,
+	dt_criacao_areaConhecimento DATE,
+	dt_alteracao_areaConhecimento DATE,
+    primary key (cd_areaConhecimento),
+    
+    constraint fk_nm_usuario_criou_areaConhecimento
+    	foreign key (nm_usuario_criou_areaConhecimento)
+    		references usuarioSistema(nm_nick_usuarioSistema),
+    
+    constraint fk_nm_usuairo_alterou_areaConhecimento
+    	foreign key (nm_usuario_alterou_areaConhecimento)
+    		references usuarioSistema(nm_nick_usuarioSistema)
+);
+
+create table subAreaConhecimento (
+	cd_areaConhecimento INTEGER NOT NULL,
+	cd_subAreaConhecimento INTEGER,
+	desc_subAreaConhecimento VARCHAR(50),
+	nm_usuario_criou_subAareaConhecimento VARCHAR(20),
+	dt_cricao_subAreaConhecimento DATE,
+	nm_usuario_alterou_subAreaConhecimento VARCHAR(20),
+	dt_alteracao_subAreaConhecimento DATE,
+    primary key (cd_subAreaConhecimento),
+    constraint fk_area_conhecimento_sub_area_conhecimento
+    foreign key (cd_areaConhecimento)
+    references areaConhecimento(cd_areaConhecimento),
+    
+    constraint fk_nm_usuario_criou_subAreaConhecimento
+    foreign key (nm_usuario_criou_subAareaConhecimento)
+    references usuarioSistema(nm_nick_usuarioSistema),
+    
+    constraint fk_nm_usuairo_alterou_subAreaConhecimento
+    foreign key (nm_usuario_alterou_subAreaConhecimento)
+    references usuarioSistema(nm_nick_usuarioSistema)
+);
+
+create table assunto (
+	cd_assunto INTEGER auto_increment NOT NULL,
+	nm_assunto VARCHAR(50),
+	nm_usuario_criou_assunto VARCHAR(20),
+	dt_criacao_assunto DATE,
+	nm_usuairo_alterou_assunto VARCHAR(20),
+	dt_alteracao_assunto DATE,
+    primary key (cd_assunto),
+    
+    constraint fk_nm_usuario_criou_assunto
+    foreign key (nm_usuario_criou_assunto)
+    references usuarioSistema(nm_nick_usuarioSistema),
+    
+    constraint fk_nm_usuairo_alterou_assunto
+    foreign key (nm_usuairo_alterou_assunto)
+    references usuarioSistema(nm_nick_usuarioSistema)
+);
+
+create table ALUNO(
+	cd_instituicao_aluno INTEGER auto_increment NOT NULL,
+	cd_aluno INTEGER,
+	nm_aluno VARCHAR(20),
+	cd_cpf_aluno INTEGER,
+	nm_tel_aluno VARCHAR(15),
+	nm_cel_aluno VARCHAR(15),
+	nm_email_aluno VARCHAR(256), 
+	dt_nascimento_aluno DATE,
+	cd_matricula_aluno VARCHAR(6),
+	nm_pseudonimo_aluno VARCHAR(50),
+	nm_usuario_criou_aluno VARCHAR(20),
+	dt_criacao_aluno DATE,
+	nm_usuairo_alterou_aluno VARCHAR(20),
+	dt_alteracao_aluno DATE,
+    primary key (cd_instituicao_aluno),
+    
+    constraint fk_nm_usuario_criou_aluno
+    foreign key (nm_usuario_criou_aluno)
+    references usuarioSistema(nm_nick_usuarioSistema),
+    
+    constraint fk_nm_usuairo_alterou_aluno
+    foreign key (nm_usuairo_alterou_aluno)
+    references usuarioSistema(nm_nick_usuarioSistema)
+);
+
+create table orientador (
+	cd_instituicao_orientador INTEGER auto_increment NOT NULL,
+	cd_orientador INTEGER,
+	nm_orientador VARCHAR(50),
+	cd_cpf_orientador INTEGER,
+	nm_tel_orientador VARCHAR(15),
+	nm_cel_orientador VARCHAR(15),
+	nm_email_orientador VARCHAR(256),
+	dt_nascimento_orientador DATE,
+	cd_matricula_rm_orientador VARCHAR(4),
+	nm_pseudonimo_orientador VARCHAR(50),
+	nm_grauinstrucao_orientador VARCHAR(20),
+	nm_usuario_criou_orientador VARCHAR(20),
+	dt_criacao_orientador DATE,
+	nm_usuairo_alterou_orientador VARCHAR(20),
+	dt_alteracao_orientador DATE,
+    primary key (cd_instituicao_orientador)    ,
+    
+    constraint fk_nm_usuario_criou_orientador
+    foreign key (nm_usuario_criou_orientador)
+    references usuarioSistema(nm_nick_usuarioSistema),
+    
+    constraint fk_nm_usuairo_alterou_orientador
+    foreign key (nm_usuairo_alterou_orientador)
+    references usuarioSistema(nm_nick_usuarioSistema)
+);
+
+create table instituicao (
+	cd_instituicao INTEGER NOT NULL, 
+	nm_instituicao VARCHAR(50),
+	cd_cnpj_instituicao INTEGER,
+	nm_razao_social_instituicao VARCHAR(50),
+	nm_usuario_criou_instituicao VARCHAR(20),
+	dt_criacao_instituicao DATE,
+	nm_usuario_alterou_instituicao VARCHAR(20),
+	dt_alteracao_instituicao DATE,
+    primary key (cd_instituicao),
+    
+    constraint fk_nm_usuario_criou_instituicao
+    foreign key (nm_usuario_criou_instituicao)
+    references usuarioSistema(nm_nick_usuarioSistema),
+    
+    constraint fk_nm_usuario_alterou_instituicao
+    foreign key (nm_usuario_alterou_instituicao)
+    references usuarioSistema(nm_nick_usuarioSistema)
+);
+
+create table curso (
+	cd_instituicao_curso INTEGER NOT NULL,
+	cd_curso INTEGER,
+	nm_curso VARCHAR(50),
+	nm_abreviado_curso VARCHAR(4),
+	nm_tipo_modalidade_curso VARCHAR(20),
+	nm_usuario_criou_curso VARCHAR(20),
+	dt_criacao_curso DATE,
+	nm_usuario_alterou_curso VARCHAR(20),
+	dt_alteracao_curso DATE,
+    primary key (cd_curso),
+    
+    constraint fk_nm_usuario_criou_curso
+    foreign key (nm_usuario_criou_curso)
+    references usuarioSistema(nm_nick_usuarioSistema),
+    
+    constraint fk_nm_usuario_alterou_curso
+    foreign key (nm_usuario_alterou_curso)
+    references usuarioSistema(nm_nick_usuarioSistema)
+);
+
+create table TCC(
+	nm_classificacao_tcc INTEGER,
+	nm_cutter_tcc VARCHAR (20),
+	nm_titulo_tcc VARCHAR (256),
+	nm_local_tcc VARCHAR (50),
+	cd_instituicao_tcc INTEGER,
+	nm_arquivo_tcc VARCHAR (260),
+	an_tcc INTEGER,
+	qt_numero_paginas_tcc INTEGER,
+	dt_entrega_tcc DATE,
+	cd_curso_tcc INTEGER,
+	cd_aluno_tcc INTEGER,
+	cd_orientador_tcc INTEGER,
+	cd_areacon_tcc INTEGER,
+	cd_subareacon_tcc INTEGER,
+	cd_tombo_tcc INTEGER,
+	dt_inclusao_tcc DATE,
+	nm_usuario_criou_tcc varchar(50),
+	dt_criacao_tcc DATE,
+	nm_usuario_alterou_tcc varchar(50),
+	dt_alteracao_tcc DATE,
+    
+	constraint fk_nm_usuario_criou_tcc
+    foreign key (nm_usuario_criou_tcc)
+    references usuarioSistema(nm_nick_usuarioSistema),
+    
+    constraint fk_nm_usuario_alterou_tcc
+    foreign key (nm_usuario_alterou_tcc)
+    references usuarioSistema(nm_nick_usuarioSistema)
+  
+);
